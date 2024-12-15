@@ -38,6 +38,8 @@ kotlin {
 
             // material3
             implementation(libs.material3)
+            // navigation
+            implementation(libs.navigation.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
