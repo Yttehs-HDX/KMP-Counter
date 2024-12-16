@@ -1,30 +1,43 @@
+
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
         }
     }
     
     jvm("desktop")
-    
+
+    sqldelight {
+        databases {
+            create("AppDatabase") {
+                packageName.set("org.shettyyttehs.counter.cache")
+            }
+        }
+    }
+
     sourceSets {
         val desktopMain by getting
         
         androidMain.dependencies {
+            // wizard default dependencies
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            // sqlDelight
+            implementation(libs.sqldelight.android)
         }
         commonMain.dependencies {
             // wizard default dependencies
@@ -40,10 +53,17 @@ kotlin {
             implementation(libs.material3)
             // navigation
             implementation(libs.navigation.compose)
+            // sqlDelight
+            implementation(libs.sqldelight.coroutine)
+            // lifecycle-viewmodel-compose
+            implementation(libs.lifecycle.viewmodel.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+
+            // sqlDelight
+            implementation(libs.sqldelight.jvm)
         }
     }
 }

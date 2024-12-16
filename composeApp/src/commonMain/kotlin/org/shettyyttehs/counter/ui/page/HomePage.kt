@@ -9,16 +9,16 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.dp
+import org.shettyyttehs.counter.ui.NumberViewModel
 
 @Composable
-fun HomePage(
-    num: Long,
-    onIncrement: () -> Unit,
-) {
+fun HomePage(numberViewModel: NumberViewModel) {
     val backgroundColor = MaterialTheme.colorScheme.background
 
     Box(
@@ -42,13 +42,17 @@ fun HomePage(
             )
         }
 
+        val currentNumber by numberViewModel.currentNumber.collectAsState()
+
         Button(
             modifier = Modifier
                 .padding(64.dp),
-            onClick = onIncrement,
+            onClick = {
+                numberViewModel.increaseNumber()
+            },
         ) {
             Text(
-                text = "$num",
+                text = "$currentNumber",
                 style = MaterialTheme.typography.headlineMedium,
             )
         }

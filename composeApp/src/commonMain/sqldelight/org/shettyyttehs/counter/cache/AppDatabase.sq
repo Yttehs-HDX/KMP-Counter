@@ -1,0 +1,13 @@
+CREATE TABLE CounterNumber (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    number INTEGER NOT NULL
+);
+
+getNumber:
+SELECT number FROM CounterNumber WHERE id = 0;
+
+updateNumber:
+UPDATE CounterNumber SET number = ? WHERE id = 0;
+
+insertNumber:
+INSERT INTO CounterNumber (id, number) VALUES (0, ?);
