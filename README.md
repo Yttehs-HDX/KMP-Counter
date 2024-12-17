@@ -20,9 +20,9 @@ When you click the button, the number will increase by 1.
 
 ## Screenshots
 
-| Android (light)                     | Desktop (dark)                      |
+| Desktop (dark)                      | Android (light)                     |
 |-------------------------------------|-------------------------------------|
-| ![Android](docs/assets/android.png) | ![Desktop](docs/assets/desktop.png) |
+| ![Desktop](docs/assets/desktop.png) | ![Android](docs/assets/android.png) |
 
 ## Dependencies
 
