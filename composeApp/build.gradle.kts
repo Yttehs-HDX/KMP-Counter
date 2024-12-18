@@ -36,6 +36,9 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 
+            // accompanist-systemuicontroller
+            implementation(libs.accompanist.systemuicontroller)
+
             // sqlDelight
             implementation(libs.sqldelight.android)
         }
