@@ -17,6 +17,7 @@ When you click the button, the number will increase by 1.
 
 - [x] Save the number to the database
 - [x] Dark mode
+- [x] Monet color (Android only)
 
 ## Screenshots
 
