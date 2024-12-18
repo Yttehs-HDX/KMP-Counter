@@ -35,6 +35,10 @@ When you click the button, the number will increase by 1.
 
 > Refer to [libs.versions.toml](gradle/libs.versions.toml)
 
+## Download
+
+[Release](https://github.com/Yttehs-HDX/KMP-Counter/releases)
+
 ## License
 
 MIT
