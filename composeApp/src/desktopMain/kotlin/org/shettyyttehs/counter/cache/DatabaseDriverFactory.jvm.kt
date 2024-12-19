@@ -12,13 +12,13 @@ actual class DatabaseDriverFactory {
             url = "jdbc:sqlite:$dbPath"
         )
 
-        // Create the database if it doesn't exist
-        val dbFile = File(dbPath)
-        if (!dbFile.exists()) {
-            AppDatabase.Schema.create(driver)
+        return driver.apply {
+            // Create the database if it doesn't exist
+            val dbFile = File(dbPath)
+            if (!dbFile.exists()) {
+                AppDatabase.Schema.create(driver)
+            }
         }
-
-        return driver
     }
 }
 
